@@ -376,3 +376,95 @@
 
 
 
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Botón de Anuncios</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+
+    #boton-anuncios {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      padding: 10px;
+      cursor: pointer;
+      z-index: 1000;
+    }
+
+    #lista-anuncios {
+      position: fixed;
+      top: 60px;
+      left: 20px;
+      background-color: white;
+      border: 1px solid #ccc;
+      padding: 10px;
+      display: none;
+      width: 200px;
+      box-shadow: 0px 0px 5px rgba(0,0,0,0.2);
+    }
+
+    .titulo-anuncio {
+      cursor: pointer;
+      margin-bottom: 5px;
+      color: #007bff;
+    }
+
+    .titulo-anuncio:hover {
+      text-decoration: underline;
+    }
+
+    #cuadro-anuncio {
+      position: fixed;
+      top: 60px;
+      left: 240px;
+      background-color: #f8f9fa;
+      border: 1px solid #ccc;
+      padding: 15px;
+      width: 300px;
+      display: none;
+      box-shadow: 0px 0px 5px rgba(0,0,0,0.2);
+    }
+  </style>
+</head>
+<body>
+
+<button id="boton-anuncios">📢 Anuncios</button>
+
+<div id="lista-anuncios">
+  <div class="titulo-anuncio" onclick="mostrarAnuncio('anuncio1')">📌 Horario especial</div>
+  <div class="titulo-anuncio" onclick="mostrarAnuncio('anuncio2')">📌 Nueva sala disponible</div>
+</div>
+
+<div id="cuadro-anuncio"></div>
+
+<script>
+  const boton = document.getElementById("boton-anuncios");
+  const lista = document.getElementById("lista-anuncios");
+  const cuadro = document.getElementById("cuadro-anuncio");
+
+  boton.onclick = () => {
+    lista.style.display = (lista.style.display === "none") ? "block" : "none";
+    cuadro.style.display = "none";
+  };
+
+  function mostrarAnuncio(id) {
+    const anuncios = {
+      anuncio1: "Este viernes la biblioteca cerrará a las 4:00 PM.",
+      anuncio2: "Se ha habilitado la Sala B-203 para reservaciones estudiantiles."
+    };
+
+    cuadro.innerText = anuncios[id];
+    cuadro.style.display = "block";
+  }
+</script>
+
+</body>
+</html>
