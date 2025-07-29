@@ -374,8 +374,6 @@
 
 </script>
 
-
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -424,13 +422,28 @@
     #cuadro-anuncio {
       position: fixed;
       top: 60px;
-      left: 1000px;
+      left: 1220px;
       background-color: #f8f9fa;
       border: 1px solid #ccc;
-      padding: 15px;
+      padding: 15px 15px 10px 15px;
       width: 300px;
       display: none;
       box-shadow: 0px 0px 5px rgba(0,0,0,0.2);
+    }
+
+    #cerrar-cuadro {
+      position: absolute;
+      top: 5px;
+      right: 10px;
+      background: none;
+      border: none;
+      font-size: 18px;
+      cursor: pointer;
+      color: #ff0000;
+    }
+
+    #cerrar-cuadro:hover {
+      color: #000;
     }
   </style>
 </head>
@@ -443,12 +456,16 @@
   <div class="titulo-anuncio" onclick="mostrarAnuncio('anuncio2')">📌 Nueva sala disponible</div>
 </div>
 
-<div id="cuadro-anuncio"></div>
+<div id="cuadro-anuncio">
+  <button id="cerrar-cuadro" onclick="cerrarAnuncio()">✖</button>
+  <div id="contenido-anuncio"></div>
+</div>
 
 <script>
   const boton = document.getElementById("boton-anuncios");
   const lista = document.getElementById("lista-anuncios");
   const cuadro = document.getElementById("cuadro-anuncio");
+  const contenido = document.getElementById("contenido-anuncio");
 
   boton.onclick = () => {
     lista.style.display = (lista.style.display === "none") ? "block" : "none";
@@ -461,8 +478,12 @@
       anuncio2: "Se ha habilitado la Sala B-203 para reservaciones estudiantiles."
     };
 
-    cuadro.innerText = anuncios[id];
+    contenido.innerText = anuncios[id];
     cuadro.style.display = "block";
+  }
+
+  function cerrarAnuncio() {
+    cuadro.style.display = "none";
   }
 </script>
 
